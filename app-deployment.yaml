@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-monitor
+spec:
+  selector:
+    matchLabels:
+      app: health-monitor
+      tier: frontend
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: health-monitor
+        tier: frontend
+    spec:
+      containers:
+      - name: edge-demo
+        image: hrabhijith/edge-demo:v1.0
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 5000
