@@ -1,25 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: health-monitor
+  name: health-monitor-deploy
 spec:
   selector:
     matchLabels:
-      app: health-monitor
-      tier: frontend
+      project: health-monitor
   replicas: 3
   template:
     metadata:
       labels:
-        app: health-monitor
-        tier: frontend
+        project: health-monitor
     spec:
       containers:
       - name: edge-demo
+        imagePullPolicy: always
         image: hrabhijith/edge-demo:v1.0
-        resources:
-          requests:
-            cpu: 100m
-            memory: 100Mi
         ports:
         - containerPort: 5000
