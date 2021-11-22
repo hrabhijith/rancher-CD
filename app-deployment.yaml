@@ -14,7 +14,6 @@ spec:
     spec:
       containers:
       - name: edge-demo
-        imagePullPolicy: always
         image: hrabhijith/edge-demo:v1.0
         ports:
         - containerPort: 5000
